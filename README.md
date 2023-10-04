@@ -1,12 +1,6 @@
-    __  ___           __            _            
-   /  |/  /___ ______/ /____  _____(_)___  ____ _
-  / /|_/ / __ `/ ___/ __/ _ \/ ___/ / __ \/ __ `/
- / /  / / /_/ (__  ) /_/  __/ /  / / / / / /_/ / 
-/_/  /_/\__,_/____/\__/\___/_/  /_/_/ /_/\__, /  
-                                        /____/   
-    _   ____________ _    ________  ___
-   / | / / ____/ __ \ |  / /  _/  |/  /
-  /  |/ / __/ / / / / | / // // /|_/ / 
- / /|  / /___/ /_/ /| |/ // // /  / /  
-/_/ |_/_____/\____/ |___/___/_/  /_/   
-                                       
+# MASTERING NEOVIM
+
+configuracion que armo para la serie de videos
+
+[youtube](https://www.youtube.com/playlist?list=PLzc_3azyItDXysVKuih0vRHziTuSZEVP9)
+[discord](https://discord.gg/4Pe8hfRfTx)
