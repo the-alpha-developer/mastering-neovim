@@ -1,7 +1,9 @@
 return {
   "nvim-telescope/telescope.nvim",
   event = 'VeryLazy',
-  dependencies = { "nvim-lua/plenary.nvim",
+  dependencies = {
+    "nvim-lua/plenary.nvim",
+    "nvim-telescope/telescope-file-browser.nvim",
     {
       'nvim-telescope/telescope-fzf-native.nvim',
       build = 'make'
@@ -27,14 +29,14 @@ return {
       function()
         require('telescope.builtin').git_files({ show_untracked = true })
       end,
-      { desc = "Telescope Git Files" },
+      desc = "Telescope Git Files",
     },
     {
       "<leader>pe",
       function ()
         require("telescope.builtin").buffers()
       end,
-      { desc = "Telescope buffers" },
+      desc = "Telescope buffers",
     },
     {
       "<leader>rp",
@@ -50,14 +52,21 @@ return {
       function()
         require('telescope.builtin').find_files()
       end,
-      { desc = "Telescope Find Files" },
+      desc = "Telescope Find Files",
     },
     {
       "<leader>ph",
       function()
         require("telescope.builtin").help_tags()
       end,
-      { desc = "Telescope Help" }
+      desc = "Telescope Help"
     },
+    {
+      "<leader>bb",
+      function ()
+        require("telescope").extensions.file_browser.file_browser({path = "%:h:p", select_buffer = true})
+      end,
+      desc = "Telescope file browser"
+    }
   },
 }
