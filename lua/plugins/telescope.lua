@@ -64,7 +64,7 @@ return {
       function()
         require("telescope.builtin").find_files({
           prompt_title = "Plugins",
-          cwd = "~/.config/nvim/lua/plugins",
+          cwd = vim.fn.stdpath("config") .. "/lua/plugins",
           attach_mappings = function(_, map)
             local actions = require("telescope.actions")
             local action_state = require("telescope.actions.state")
