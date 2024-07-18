@@ -46,12 +46,7 @@ function M.setup()
           -- Variable = 6
         }
         if vim_item.kind == 'Color' and entry.completion_item.documentation then
-          local _, _, r, g, b =
-          ---@diagnostic disable-next-line: param-type-mismatch
-              string.find(entry.completion_item.documentation, '^rgb%((%d+), (%d+), (%d+)')
-
-          if r and g and b then
-            local color = string.format('%02x', r) .. string.format('%02x', g) .. string.format('%02x', b)
+            local color = entry.completion_item.documentation:gsub('#', '')
             local group = 'Tw_' .. color
 
             if vim.api.nvim_call_function('hlID', { group }) < 1 then
@@ -62,7 +57,6 @@ function M.setup()
             vim_item.kind_hl_group = group
 
             return vim_item
-          end
         end
 
         vim_item.kind = KIND_ICONS[vim_item.kind] or vim_item.kind
