@@ -49,20 +49,24 @@ function M.setup()
           local _, _, r, g, b =
           ---@diagnostic disable-next-line: param-type-mismatch
               string.find(entry.completion_item.documentation, '^rgb%((%d+), (%d+), (%d+)')
+		  local color
 
+		  -- The next conditional is for the new tailwindcss version.
           if r and g and b then
-            local color = string.format('%02x', r) .. string.format('%02x', g) .. string.format('%02x', b)
-            local group = 'Tw_' .. color
-
-            if vim.api.nvim_call_function('hlID', { group }) < 1 then
-              vim.api.nvim_command('highlight' .. ' ' .. group .. ' ' .. 'guifg=#' .. color)
-            end
-
-            vim_item.kind = KIND_ICONS.Tailwind
-            vim_item.kind_hl_group = group
-
-            return vim_item
+			color = string.format('%02x', r) .. string.format('%02x', g) .. string.format('%02x', b)
+		  else
+			color = entry.completion_item.documentation:gsub('#', '')
           end
+          local group = 'Tw_' .. color
+
+          if vim.api.nvim_call_function('hlID', { group }) < 1 then
+            vim.api.nvim_command('highlight' .. ' ' .. group .. ' ' .. 'guifg=#' .. color)
+          end
+
+          vim_item.kind = KIND_ICONS.Tailwind
+          vim_item.kind_hl_group = group
+
+          return vim_item
         end
 
         vim_item.kind = KIND_ICONS[vim_item.kind] or vim_item.kind
